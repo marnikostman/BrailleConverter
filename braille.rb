@@ -50,10 +50,16 @@ class Night_Writer
       end
       line_num = 0
     end
-    puts converted_string
+    converted_string
   end
 
 end
 
-nightwriter = Night_Writer.new
-nightwriter.convert_to_braille("Hello world " * 10)
+require 'minitest/autorun'
+
+class NightWriter < Minitest::Test
+  def test_foo
+    foo_braille = Night_Writer.new.convert_to_braille("foo")
+    assert_equal("000.0.\n0..0.0\n..0.0.\n", foo_braille)
+  end
+end
